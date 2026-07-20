@@ -5,8 +5,8 @@ BASE = r"C:\Users\mihel\dj-card"
 
 CARDS = {
     "lorenzo": {
-        "fn": "Lorenzo Piccinini",
-        "n": "Piccinini;Lorenzo;;;",
+        "fn": "Lorenzo Pizzinini",
+        "n": "Pizzinini;Lorenzo;;;",
         "email": "lorenzo@datajockey.us",
         "url": "https://rush0017.github.io/dj-card/",
         "vcf_path": rf"{BASE}\lorenzo.vcf",
