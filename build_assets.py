@@ -8,6 +8,7 @@ CARDS = {
         "fn": "Lorenzo Pizzinini",
         "n": "Pizzinini;Lorenzo;;;",
         "email": "lorenzo@datajockey.us",
+        "tel": "+393921299670",
         "url": "https://rush0017.github.io/dj-card/",
         "vcf_path": rf"{BASE}\lorenzo.vcf",
         "qr_path": rf"{BASE}\qr-lorenzo.svg",
@@ -16,6 +17,7 @@ CARDS = {
         "fn": "Sean Mihelich",
         "n": "Mihelich;Sean;;;",
         "email": "sean@datajockey.us",
+        "tel": "+14147503617",
         "url": "https://rush0017.github.io/dj-card/sean/",
         "vcf_path": rf"{BASE}\sean\sean.vcf",
         "qr_path": rf"{BASE}\sean\qr-sean.svg",
@@ -31,6 +33,7 @@ for key, c in CARDS.items():
         "ORG:Data Jockey",
         "TITLE:Co-Founder",
         f"EMAIL;TYPE=INTERNET,WORK:{c['email']}",
+        f"TEL;TYPE=CELL,VOICE:{c['tel']}",
         "URL:https://datajockey.us",
         "END:VCARD",
     ]) + "\r\n"
