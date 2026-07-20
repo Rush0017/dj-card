@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Put your card on your phone</title>
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#0d0904" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%23171009'/%3E%3Ccircle cx='21' cy='24' r='12.5' fill='none' stroke='%23d4a853' stroke-width='2.6'/%3E%3Cpath d='M27 15.5 L40 24 L27 32.5 Z' fill='%23c4652a'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #0d0904;
+        --gold: #d4a853;
+        --gold-lt: #f0dcae;
+        --orange: #c4652a;
+        --orange-2: #de7f38;
+        --cream: #f8f6f2;
+        --cream-dim: #d6cfc3;
+        --muted: #9a8f80;
+        --hairline: rgba(212, 168, 83, 0.2);
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          "Sora",
+          -apple-system,
+          "Segoe UI",
+          sans-serif;
+        background: var(--ink);
+        color: var(--cream);
+        padding: 46px 20px 72px;
+        background-image: radial-gradient(
+          ellipse 80% 40% at 50% -5%,
+          rgba(212, 168, 83, 0.15),
+          transparent 60%
+        );
+      }
+      .wrap {
+        max-width: 940px;
+        margin: 0 auto;
+      }
+      header {
+        text-align: center;
+      }
+      .kicker {
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--gold);
+        margin-bottom: 12px;
+        text-indent: 0.3em;
+      }
+      h1 {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: clamp(28px, 5vw, 42px);
+        font-weight: 600;
+        line-height: 1.1;
+      }
+      .sub {
+        margin: 13px auto 0;
+        max-width: 540px;
+        font-size: 15.5px;
+        color: var(--cream-dim);
+        line-height: 1.6;
+      }
+
+      /* ---- scan cards ---- */
+      .scans {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 22px;
+        margin-top: 44px;
+      }
+      .scan {
+        border: 1px solid var(--hairline);
+        border-radius: 22px;
+        padding: 26px 22px 22px;
+        text-align: center;
+        background: linear-gradient(
+          168deg,
+          rgba(248, 246, 242, 0.045),
+          rgba(248, 246, 242, 0.012)
+        );
+      }
+      .who {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: 25px;
+        font-weight: 600;
+      }
+      .whosub {
+        font-size: 11.5px;
+        color: var(--muted);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        margin-top: 5px;
+      }
+      .qbox {
+        background: var(--cream);
+        border-radius: 16px;
+        padding: 17px;
+        margin: 18px auto 0;
+        max-width: 214px;
+        box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
+      }
+      .qbox img {
+        width: 100%;
+        display: block;
+      }
+      .scan .hint {
+        margin-top: 14px;
+        font-size: 13px;
+        color: var(--cream-dim);
+        line-height: 1.55;
+      }
+      .scan .hint b {
+        color: var(--gold);
+        font-weight: 600;
+      }
+
+      /* ---- steps ---- */
+      .band {
+        margin-top: 54px;
+        border-top: 1px solid var(--hairline);
+        padding-top: 40px;
+      }
+      .band h2 {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: 26px;
+        font-weight: 600;
+        text-align: center;
+      }
+      .band .lead {
+        text-align: center;
+        margin: 10px auto 0;
+        max-width: 540px;
+        font-size: 14.5px;
+        color: var(--cream-dim);
+        line-height: 1.6;
+      }
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 22px;
+        margin-top: 30px;
+      }
+      .step {
+        border: 1px solid rgba(212, 168, 83, 0.13);
+        border-radius: 18px;
+        padding: 20px 18px;
+        background: rgba(248, 246, 242, 0.025);
+      }
+      .num {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--gold);
+        color: var(--gold);
+        font-weight: 700;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 13px;
+      }
+      .step h3 {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1.3;
+      }
+      .step p {
+        margin-top: 7px;
+        font-size: 14px;
+        color: var(--cream-dim);
+        line-height: 1.6;
+      }
+      .step b {
+        color: var(--cream);
+        font-weight: 600;
+      }
+      .aside {
+        margin-top: 34px;
+        border: 1px solid var(--hairline);
+        border-radius: 18px;
+        padding: 22px;
+        background: rgba(212, 168, 83, 0.055);
+      }
+      .aside h3 {
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: var(--gold);
+        margin-bottom: 9px;
+      }
+      .aside p {
+        font-size: 14.5px;
+        color: var(--cream-dim);
+        line-height: 1.65;
+      }
+      .aside p + p {
+        margin-top: 10px;
+      }
+      .links {
+        margin-top: 44px;
+        text-align: center;
+        font-size: 13.5px;
+        color: var(--muted);
+        line-height: 2;
+      }
+      .links a {
+        color: var(--gold);
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="kicker">Data Jockey</div>
+        <h1>Put your card on your phone</h1>
+        <p class="sub">
+          Point your iPhone camera at your own square below. It opens your setup
+          page on the phone, and from there everything is on-screen.
+        </p>
+      </header>
+
+      <div class="scans">
+        <div class="scan">
+          <div class="who">Lorenzo</div>
+          <div class="whosub">Scan with your iPhone</div>
+          <div class="qbox">
+            <img src="qr-setup-lorenzo.svg" alt="QR code for Lorenzo's setup" />
+          </div>
+          <p class="hint">Opens <b>your setup page</b><br />on your phone</p>
+        </div>
+        <div class="scan">
+          <div class="who">Sean</div>
+          <div class="whosub">Scan with your iPhone</div>
+          <div class="qbox">
+            <img src="qr-setup-sean.svg" alt="QR code for Sean's setup" />
+          </div>
+          <p class="hint">Opens <b>your setup page</b><br />on your phone</p>
+        </div>
+      </div>
+
+      <div class="band">
+        <h2>Then keep it one tap away</h2>
+        <p class="lead">
+          Once your card is open on the phone, add it to your home screen. It
+          gets the Data Jockey icon and behaves like an app, so you never have
+          to search for a link again.
+        </p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="num">1</div>
+            <h3>Open your card</h3>
+            <p>
+              In Safari on your iPhone, go to your card page. The setup page has
+              a link straight to it.
+            </p>
+          </div>
+          <div class="step">
+            <div class="num">2</div>
+            <h3>Tap the share button</h3>
+            <p>
+              The square with an arrow pointing up, at the bottom of Safari.
+              Scroll the list that appears.
+            </p>
+          </div>
+          <div class="step">
+            <div class="num">3</div>
+            <h3>Add to Home Screen</h3>
+            <p>
+              Tap <b>Add to Home Screen</b>, then <b>Add</b>. The icon lands on
+              your home screen straight away.
+            </p>
+          </div>
+        </div>
+
+        <div class="aside">
+          <h3>Which one do I actually use?</h3>
+          <p>
+            <b>Meeting an iPhone user:</b> hold your phone near theirs. Nothing
+            to open. This is what the setup page switches on.
+          </p>
+          <p>
+            <b>Meeting an Android user, or across a table:</b> tap your home
+            screen icon, tap Show QR code, let them scan it.
+          </p>
+          <p>
+            <b>By email or WhatsApp:</b> just send the link to your card. It
+            opens on anything.
+          </p>
+        </div>
+      </div>
+
+      <p class="links">
+        Cards: <a href="./">Lorenzo</a> &middot; <a href="sean/">Sean</a><br />
+        Setup: <a href="setup.html">Lorenzo</a> &middot;
+        <a href="sean/setup.html">Sean</a><br />
+        <a href="preview.html">See what the other person sees &rarr;</a>
+      </p>
+    </div>
+  </body>
+</html>
