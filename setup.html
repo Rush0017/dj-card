@@ -8,7 +8,8 @@
     />
     <title>Tap-to-share setup — Lorenzo</title>
     <meta name="robots" content="noindex" />
-    <meta name="theme-color" content="#120c06" />
+    <meta name="theme-color" content="#0d0904" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <link
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%23171009'/%3E%3Ccircle cx='21' cy='24' r='12.5' fill='none' stroke='%23d4a853' stroke-width='2.6'/%3E%3Cpath d='M27 15.5 L40 24 L27 32.5 Z' fill='%23c4652a'/%3E%3C/svg%3E"
@@ -16,19 +17,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap"
       rel="stylesheet"
     />
     <style>
       :root {
-        --ink: #120c06;
+        --ink: #0d0904;
         --gold: #d4a853;
         --orange: #c4652a;
-        --orange-2: #d97a35;
+        --orange-2: #de7f38;
         --cream: #f8f6f2;
         --cream-dim: #d6cfc3;
         --muted: #9a8f80;
-        --hairline: rgba(212, 168, 83, 0.22);
+        --hairline: rgba(212, 168, 83, 0.2);
       }
       * {
         margin: 0;
@@ -43,15 +44,15 @@
           sans-serif;
         background: var(--ink);
         color: var(--cream);
-        padding: 40px 22px calc(48px + env(safe-area-inset-bottom));
+        padding: 40px 22px calc(52px + env(safe-area-inset-bottom));
         background-image: radial-gradient(
-          ellipse 90% 50% at 50% -10%,
-          rgba(212, 168, 83, 0.16),
-          transparent 60%
+          ellipse 90% 45% at 50% -8%,
+          rgba(212, 168, 83, 0.15),
+          transparent 62%
         );
       }
       .wrap {
-        max-width: 460px;
+        max-width: 470px;
         margin: 0 auto;
       }
       .kicker {
@@ -60,39 +61,44 @@
         font-size: 11px;
         font-weight: 700;
         color: var(--gold);
-        margin-bottom: 10px;
+        margin-bottom: 11px;
+        text-indent: 0.28em;
       }
       h1 {
         font-family: "Fraunces", Georgia, serif;
-        font-size: 32px;
+        font-size: 33px;
         font-weight: 600;
         line-height: 1.12;
       }
       .sub {
-        margin-top: 10px;
+        margin-top: 11px;
         font-size: 15px;
         color: var(--cream-dim);
-        line-height: 1.55;
+        line-height: 1.6;
       }
       .step {
-        margin-top: 26px;
+        margin-top: 30px;
         display: flex;
-        gap: 16px;
+        gap: 15px;
         align-items: flex-start;
       }
       .num {
         flex: none;
-        width: 36px;
-        height: 36px;
+        width: 35px;
+        height: 35px;
         border-radius: 50%;
         border: 1.5px solid var(--gold);
         color: var(--gold);
         font-weight: 700;
-        font-size: 16px;
+        font-size: 15px;
         display: flex;
         align-items: center;
         justify-content: center;
         margin-top: 2px;
+      }
+      .body {
+        flex: 1;
+        min-width: 0;
       }
       .step h2 {
         font-size: 17px;
@@ -103,7 +109,7 @@
         margin-top: 6px;
         font-size: 14.5px;
         color: var(--cream-dim);
-        line-height: 1.6;
+        line-height: 1.62;
       }
       .step b {
         color: var(--cream);
@@ -111,45 +117,73 @@
       }
       .btn {
         display: block;
-        margin-top: 14px;
+        margin-top: 13px;
         padding: 15px;
         border-radius: 13px;
         background: linear-gradient(160deg, var(--orange-2), var(--orange));
         color: #fff;
         font-weight: 600;
-        font-size: 15.5px;
+        font-size: 15px;
         text-align: center;
         text-decoration: none;
-        box-shadow: 0 8px 24px rgba(196, 101, 42, 0.3);
+        box-shadow: 0 8px 22px rgba(196, 101, 42, 0.3);
       }
-      .done {
-        margin-top: 34px;
+      .poster {
+        margin-top: 14px;
         border: 1px solid var(--hairline);
         border-radius: 16px;
-        padding: 20px;
+        padding: 12px;
+        background: rgba(248, 246, 242, 0.03);
+        text-align: center;
+      }
+      .poster img {
+        width: 100%;
+        max-width: 176px;
+        border-radius: 10px;
+        display: block;
+        margin: 0 auto;
+      }
+      .poster .cap {
+        margin-top: 11px;
+        font-size: 12.5px;
+        color: var(--gold);
+        font-weight: 600;
+        letter-spacing: 0.03em;
+      }
+      .poster .cap2 {
+        margin-top: 4px;
+        font-size: 12.5px;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+      .done {
+        margin-top: 36px;
+        border: 1px solid var(--hairline);
+        border-radius: 17px;
+        padding: 21px;
         background: rgba(212, 168, 83, 0.06);
       }
       .done h3 {
-        font-size: 15px;
+        font-size: 13px;
         color: var(--gold);
-        letter-spacing: 0.12em;
+        letter-spacing: 0.14em;
         text-transform: uppercase;
-        margin-bottom: 8px;
+        margin-bottom: 9px;
       }
       .done p {
         font-size: 14.5px;
         color: var(--cream-dim);
-        line-height: 1.6;
+        line-height: 1.62;
       }
       .note {
-        margin-top: 22px;
+        margin-top: 20px;
         font-size: 13px;
         color: var(--muted);
-        line-height: 1.6;
+        line-height: 1.62;
       }
       .back {
         display: inline-block;
-        margin-top: 28px;
+        margin-top: 26px;
         color: var(--gold);
         font-size: 14px;
         text-decoration: none;
@@ -161,17 +195,17 @@
       <div class="kicker">Data Jockey &middot; One-time setup</div>
       <h1>Share your card with a tap</h1>
       <p class="sub">
-        Do these 3 steps once on your iPhone. After that, you can share your
-        contact just by holding your iPhone near someone else's iPhone.
+        Four steps, once. After this, holding your iPhone near another iPhone
+        sends your details across with the Data Jockey look on them.
       </p>
 
       <div class="step">
         <div class="num">1</div>
-        <div>
+        <div class="body">
           <h2>Save yourself as a contact</h2>
           <p>
-            Tap the button below. When the card appears, tap
-            <b>Create New Contact</b>, then <b>Save</b>.
+            Tap below, then tap <b>Create New Contact</b> and <b>Save</b>. This
+            puts your name, mobile and email in one place.
           </p>
           <a class="btn" href="lorenzo.vcf">Save Lorenzo's contact</a>
         </div>
@@ -179,18 +213,40 @@
 
       <div class="step">
         <div class="num">2</div>
-        <div>
+        <div class="body">
           <h2>Tell your iPhone this is you</h2>
           <p>
             Open <b>Settings</b> &rarr; <b>Contacts</b> &rarr;
-            <b>My Info</b> &rarr; pick <b>Lorenzo Pizzinini</b> from the list.
+            <b>My Info</b> &rarr; pick <b>Lorenzo Pizzinini</b>. Your iPhone now
+            knows which card is yours.
           </p>
         </div>
       </div>
 
       <div class="step">
         <div class="num">3</div>
-        <div>
+        <div class="body">
+          <h2>Put the Data Jockey look on it</h2>
+          <p>
+            This is the part that makes the tap look like us. Press and hold the
+            poster below, choose <b>Save to Photos</b>. Then open
+            <b>Contacts</b> &rarr; your own card &rarr; <b>Edit</b> &rarr;
+            <b>Contact Photo &amp; Poster</b> &rarr; <b>Edit</b> &rarr;
+            <b>Photos</b>, pick it, and tap <b>Done</b>.
+          </p>
+          <div class="poster">
+            <img src="poster-lorenzo.png" alt="Data Jockey contact poster" />
+            <div class="cap">Press and hold &rarr; Save to Photos</div>
+            <div class="cap2">
+              Your name appears across the top automatically
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num">4</div>
+        <div class="body">
           <h2>Turn on tap-to-share</h2>
           <p>
             Open <b>Settings</b> &rarr; <b>General</b> &rarr;
@@ -202,16 +258,16 @@
       <div class="done">
         <h3>How to share from now on</h3>
         <p>
-          Unlock your iPhone and hold its <b>top edge</b> close to the top of
-          the other person's iPhone. A glow appears, your card pops up &mdash;
-          tap <b>Share</b>. That's it.
+          Unlock your iPhone and hold its <b>top edge</b> near the top of the
+          other person's iPhone. Your poster appears on their screen, they tap
+          to accept, and you land in their contacts.
         </p>
       </div>
 
       <p class="note">
-        This works iPhone to iPhone (iOS 17 or newer, both unlocked). If the
-        other person has an Android, open your card and show them the QR code
-        instead &mdash; every phone can scan it.
+        Worth knowing: the tap sends your name, the numbers you pick, and the
+        poster. It does not send the web page itself. To show someone the full
+        card, open it and let them scan the QR code, or send them the link.
       </p>
 
       <a class="back" href="./">&larr; Back to my card</a>
